@@ -175,7 +175,7 @@
   </div>
 </section>
 
-<section class="hero teaser">
+<!-- <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
       <video id="teaser" autoplay muted loop playsinline height="100%">
@@ -189,10 +189,10 @@
       </h2>
     </div>
   </div>
-</section>
+</section> -->
 
 
-<section class="hero is-light is-small">
+<!-- <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
@@ -247,7 +247,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
 <section class="section">
@@ -258,31 +258,23 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
+            Multi-view neural surface reconstruction has exhibited impressive results. 
+            However, a notable limitation is the prohibitively slow inference time when compared to traditional techniques,
+             primarily attributed to the dense sampling, which is necessary to maintain the performance.
           </p>
           <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
+            This paper introduces a novel approach that substantially reduces the number of samplings by incorporating the Truncated Signed Distance Function (TSDF). 
+            While prior works have proposed importance sampling, 
+            their depedence on initial uniform samples on the entire space makes them be unable to avoid performance drop, 
+            when they attempt to use less number of samples.
+            In contrast, our method leverages the TSDF volume that is created only by the trained model,
+            and it proves to make a reasonable bound of the samplings. As a result, within the bound, 
+            finding the surface becomes easier problem to our model, even with a small number of sample points.
+            In addition, our method is the first approach that can be robustly plug-and-play into a diverse array of neural surface field models, 
+            as long as they adopt the volume rendering technique. 
           </p>
           <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
+            Our empirical results demonstrate a 11 times increase in inference speed without compromise in performance.
           </p>
         </div>
       </div>
@@ -444,11 +436,11 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+    <pre><code>@article{,
+  author    = {},
+  title     = {TSDF-Sampling: Efficient Sampling for Neural Surface Field using Truncated Signed Distance Field},
+  journal   = {ArXiv},
+  year      = {2023},
 }</code></pre>
   </div>
 </section>
