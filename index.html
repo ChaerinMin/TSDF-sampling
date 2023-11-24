@@ -259,22 +259,20 @@
         <div class="content has-text-justified">
           <p>
             Multi-view neural surface reconstruction has exhibited impressive results. 
-            However, a notable limitation is the prohibitively slow inference time when compared to traditional techniques,
-             primarily attributed to the dense sampling, which is necessary to maintain the performance.
+            However, a notable limitation is the prohibitively slow inference time when compared to traditional techniques, 
+            primarily attributed to the dense sampling, required to maintain the rendering quality. 
           </p>
           <p>
-            This paper introduces a novel approach that substantially reduces the number of samplings by incorporating the Truncated Signed Distance Function (TSDF). 
+            This paper introduces <b>a novel approach that substantially reduces the number of samplings by incorporating the Truncated Signed Distance Field (TSDF) of the scene.</b> 
             While prior works have proposed importance sampling, 
-            their depedence on initial uniform samples on the entire space makes them be unable to avoid performance drop, 
-            when they attempt to use less number of samples.
-            In contrast, our method leverages the TSDF volume that is created only by the trained model,
-            and it proves to make a reasonable bound of the samplings. As a result, within the bound, 
-            finding the surface becomes easier problem to our model, even with a small number of sample points.
-            In addition, our method is the first approach that can be robustly plug-and-play into a diverse array of neural surface field models, 
-            as long as they adopt the volume rendering technique. 
+            their dependence on initial uniform samples over the entire space makes them unable to avoid performance degradation when trying to use less number of samples. 
+            In contrast, our method leverages the TSDF volume generated only by the trained views, 
+            and it proves to provide a reasonable bound on the sampling from upcoming novel views. 
+            As a result, we achieve high rendering quality by fully exploiting the continuous neural SDF estimation within the bounds given by the TSDF volume. 
           </p>
           <p>
-            Our empirical results demonstrate a 11 times increase in inference speed without compromise in performance.
+            Notably, our method is the first approach that can be robustly plug-and-play into a diverse array of neural surface field models, 
+            as long as they use the volume rendering technique. Our empirical results show an 11-fold increase in inference speed without compromising performance.
           </p>
         </div>
       </div>
