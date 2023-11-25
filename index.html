@@ -40,6 +40,17 @@
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
   <script src="js/video_comparison.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', domReady);
+    function domReady() {
+        for (const e of document.querySelectorAll(".b-dics")) {
+            new Dics({
+                container: e,
+                textPosition: "top"
+            });
+        }
+    }
+  </script>
 </head>
 <body>
 
