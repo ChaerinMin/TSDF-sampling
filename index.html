@@ -34,6 +34,7 @@
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="stylesheet" href="./static/css/dics.min.css">
   <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="stylesheet" href="static/css/dics.min.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -51,6 +52,18 @@
             });
         }
     }
+  </script>
+  <script src="static/js/dics.min.js"></script>
+  <script>
+      document.addEventListener('DOMContentLoaded', domReady);
+      function domReady() {
+          for (const e of document.querySelectorAll(".b-dics")) {
+              new Dics({
+                  container: e,
+                  textPosition: "top"
+              });
+          }
+      }
   </script>
 </head>
 <body>
@@ -346,7 +359,7 @@
           </video> -->
           <!-- <img src="static/images/replica_slider.png" onplay="resizeAndPlay(this)"></img> -->
           <div class="b-dics" style="width: 100%">
-            <div class="b-dics__section" data-function="b-dics__section">
+            <!-- <div class="b-dics__section" data-function="b-dics__section">
               <div class="b-dics__image-container">
                 <img src="static/images/replica_hs.png" alt="HS" class="b-dics__image"/>
               </div>
@@ -359,7 +372,9 @@
               <div class="b-dics__image-container">
                 <img src="static/images/replica_ts.png" alt="TS" class="b-dics__image"/>
               </div>
-            </div>
+            </div> -->
+            <img src="static/images/replica_hs.png" alt="HS" />
+            <img src="static/images/replica_ts.png" alt="TS" />
           </div>
         </div>
       </div>
