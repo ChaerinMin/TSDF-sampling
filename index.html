@@ -39,6 +39,7 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <script src="js/video_comparison.js"></script>
 </head>
 <body>
 
@@ -320,19 +321,20 @@
     <div class="columns is-centered">
 
       <!-- Visual Effects. -->
-      <!-- <div class="column">
+      <div class="column">
         <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
+          <h2 class="title is-3">Replica</h2>
+          <!-- <p>
             Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
             would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+          </p> -->
+          <!-- <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
             <source src="./static/videos/dollyzoom-stacked.mp4"
                     type="video/mp4">
-          </video>
+          </video> -->
+          <img src="static/images/replica_slider.png" onplay="resizeAndPlay(this)"></img>
         </div>
-      </div> -->
+      </div>
       <!--/ Visual Effects. -->
 
       <!-- Matting. -->
@@ -351,8 +353,8 @@
           </div>
 
         </div>
-      </div>
-    </div> -->
+      </div>-->
+    </div> 
     <!--/ Matting. -->
 
     <!-- Animation. -->
