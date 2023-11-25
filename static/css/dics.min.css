@@ -22,7 +22,7 @@
     position: absolute;
     top: 0;
     left: 50%;
-    padding: 5px 25px;
+    padding: 3px 20px;
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
@@ -34,9 +34,9 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    font-size: 13px;
+    font-size: 11px;
     text-align: center;
-    margin: 16px 0;
+    margin: 10px 0;
     white-space: nowrap;
     opacity: .7;
     pointer-events: none
