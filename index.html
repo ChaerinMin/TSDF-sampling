@@ -205,19 +205,20 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <div class="columns is-vcentered">
+      <div class="columns is-vcentered is-variable is-2">
         <div class="column is-half has-text-centered">
           <video id="teaser" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/lobby_flythrough_projectpage_hs.mp4"
                     type="video/mp4">
           </video>
-          <p class="is-family-monospace">Hierarchical Sampling</p>
+          <p class="is-family-monospace">(a) Hierarchical Sampling</p>
         </div>
         <div class="column is-half has-text-centered">
           <video id="teaser" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/lobby_flythrough_projectpage_ts.mp4"
                     type="video/mp4">
           </video>
+          <p class="is-family-monospace">(b) TSDF Sampling</p>
         </div>
       </div>
       <h2 class="subtitle has-text-centered">
@@ -339,18 +340,20 @@
         <div class="content">
           <p>
             TSDF-Sampling integrates TSDF volume generated only by the train views, and the TSDF volume can provide sampling bound prior for upcoming novel views.
-            Note that the model agnostic TSDf-Sampling can use any existing neural surface fields as a baseline. 
+            Note that the model agnostic TSDF-Sampling can use any existing neural surface fields as a baseline. Below visualizes the coarse samples, and fine samples will be upsampled from the coarse samples. 
           </p>
           <div class="columns is-vcentered">
             <div class="column is-half has-text-centered">
               <img src="./static/images/method_HS.png"
                       class="method-image"
                       alt="Method - Hierarchical Sampling."/>
+              <p class="is-family-monospace">(a) Hierarchical Sampling</p>
             </div>
             <div class="column is-half has-text-centered">
               <img src="./static/images/method_TS.png"
                       class="method-image"
                       alt="Method - TSDF Sampling."/>
+              <p class="is-family-monospace">(b) TSDF Sampling</p>
             </div>
           </div>
         </div>
@@ -362,7 +365,7 @@
 
 <section class="section has-background-light">
   <div class="container is-max-desktop">
-    <div class="columns is-max-desktop">
+    <div class="columns is-max-desktop is-variable is-2">
       <div class="column">
         <h2 class="title is-3 has-text-centered">Ablation</h2>
         <!-- <div class="columns is-centered has-text-centered">
@@ -444,7 +447,7 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered has-text-centered is-variable is-2">
       <h2 class="title is-3">Results</h2>
     </div>
 
