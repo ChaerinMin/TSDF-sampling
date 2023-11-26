@@ -213,11 +213,8 @@
           </video>
         </div>
       </div>
-      <!-- <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
-      </h2> -->
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">TSDF-Sampling</span> can reliably render neural implicit surfaces with only 18 samples per ray for a $20 \times 20 \times 5 \text{m}^3$ scene.
     </div>
   </div>
 </section>
@@ -331,6 +328,10 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Method</h2>
+        <p>
+          TSDF-Sampling integrates TSDF volume generated only by the train views, and the TSDF volume can provide sampling bound prior for upcoming novel views.
+          Note that the model agnostic TSDf-Sampling can use any existing neural surface fields as a baseline. 
+        </p>
         <div class="columns is-vcentered">
           <div class="column is-half has-text-centered">
             <img src="./static/images/method_HS.png"
@@ -357,6 +358,9 @@
         <!-- <div class="columns is-centered has-text-centered">
           <h2 class="title is-3">Ablation</h2>
         </div> -->
+        <p>
+          In the synthetic Garage dataset, TSDF-Sampling enables high-fidelty renderings of color, depth, and normal, with as few as 4 samples per ray.
+        </p>
         <div class="columns is-vcentered">
           <div class="column is-half has-text-centered">
             <video id="teaser" autoplay controls muted loop playsinline height="100%">
@@ -433,6 +437,9 @@
     </div>
 
     <!-- Replica. -->
+    <p>
+      In the widely used <a href="https://github.com/facebookresearch/Replica-Dataset">Replica</a> dataset, the model-agnostic TSDF-Sampling can render better results with a limited number of neural network queries. 
+    </p>
     <div class="columns is-centered">
       <div class="column is-four-fifths">
         <!-- <h3 class="title is-3">Replica</h3> -->
@@ -461,6 +468,9 @@
     <!--/ Replica. -->
 
     <!-- Garage. -->
+    <p>
+      The PSNR drastically increases from 23 to 28 when using the TSDF-Sampling technique with only 11 samples in average. 
+    </p>
     <div class="columns is-centered">
       <div class="column">
         <!-- <h3 class="title is-3">Replica</h3> -->
