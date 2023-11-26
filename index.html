@@ -220,7 +220,7 @@
         </div>
       </div>
       <h2 class="subtitle has-text-centered">
-        TSDF-Sampling can reliably render neural implicit surfaces with only 18 samples per ray for a $20 \times 20 \times 5 \text{m}^3$ scene.
+        TSDF-Sampling can reliably render neural implicit surfaces with only 18 samples per ray for a 20 x 20 x 5 $\text{m}^3$ scene.
       </h2>
     </div>
   </div>
@@ -335,20 +335,22 @@
     <div class="columns is-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3 has-text-centered">Method</h2>
-        <p>
-          TSDF-Sampling integrates TSDF volume generated only by the train views, and the TSDF volume can provide sampling bound prior for upcoming novel views.
-          Note that the model agnostic TSDf-Sampling can use any existing neural surface fields as a baseline. 
-        </p>
-        <div class="columns is-vcentered">
-          <div class="column is-half has-text-centered">
-            <img src="./static/images/method_HS.png"
-                    class="method-image"
-                    alt="Method - Hierarchical Sampling."/>
-          </div>
-          <div class="column is-half has-text-centered">
-            <img src="./static/images/method_TS.png"
-                    class="method-image"
-                    alt="Method - TSDF Sampling."/>
+        <div class="content">
+          <p>
+            TSDF-Sampling integrates TSDF volume generated only by the train views, and the TSDF volume can provide sampling bound prior for upcoming novel views.
+            Note that the model agnostic TSDf-Sampling can use any existing neural surface fields as a baseline. 
+          </p>
+          <div class="columns is-vcentered">
+            <div class="column is-half has-text-centered">
+              <img src="./static/images/method_HS.png"
+                      class="method-image"
+                      alt="Method - Hierarchical Sampling."/>
+            </div>
+            <div class="column is-half has-text-centered">
+              <img src="./static/images/method_TS.png"
+                      class="method-image"
+                      alt="Method - TSDF Sampling."/>
+            </div>
           </div>
         </div>
       </div>
@@ -483,7 +485,7 @@
           <!-- <h3 class="title is-3">Replica</h3> -->
           <!-- <div class="content"> -->
             <!-- <div class="columns is-vcentered"> -->
-      <div class="column is-centered has-text-centered">
+      <div class="column is-centered">
         <!-- <p>
           Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
           would be impossible without nerfies since it would require going through a wall.
