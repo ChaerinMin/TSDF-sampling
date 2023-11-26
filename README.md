@@ -1,10 +1,9 @@
 # TSDF-Sampling
 
-This is the repository that contains source code for the [TSDF-Sampling website](https://tsdf-sampling.github.io).
+This is the repository that contains source code for the [TSDF-Sampling website](https://tsdf-sampling.github.io). The website is adapted from [Nerfies](https://nerfies.github.io/).
 
 ```
-@article{park2021nerfies
-  author    = {},
+@article{
   title     = {TSDF-Sampling: Efficient Sampling for Neural Surface Field using Truncated Signed Distance Field},
   journal   = {ArXiv},
   year      = {2023},
