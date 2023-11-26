@@ -214,7 +214,8 @@
         </div>
       </div>
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">TSDF-Sampling</span> can reliably render neural implicit surfaces with only 18 samples per ray for a $20 \times 20 \times 5 \text{m}^3$ scene.
+        TSDF-Sampling can reliably render neural implicit surfaces with only 18 samples per ray for a $20 \times 20 \times 5 \text{m}^3$ scene.
+      </h2>
     </div>
   </div>
 </section>
@@ -325,9 +326,9 @@
 
     <!-- Method. -->
   <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Method</h2>
+        <h2 class="title is-3 has-text-centered">Method</h2>
         <p>
           TSDF-Sampling integrates TSDF volume generated only by the train views, and the TSDF volume can provide sampling bound prior for upcoming novel views.
           Note that the model agnostic TSDf-Sampling can use any existing neural surface fields as a baseline. 
@@ -352,9 +353,9 @@
 
 <section class="section has-background-light">
   <div class="container is-max-desktop">
-    <div class="columns is-max-desktop has-text-centered">
+    <div class="columns is-max-desktop">
       <div class="column">
-        <h2 class="title is-3">Ablation</h2>
+        <h2 class="title is-3 has-text-centered">Ablation</h2>
         <!-- <div class="columns is-centered has-text-centered">
           <h2 class="title is-3">Ablation</h2>
         </div> -->
@@ -437,13 +438,13 @@
     </div>
 
     <!-- Replica. -->
-    <p>
-      In the widely used <a href="https://github.com/facebookresearch/Replica-Dataset">Replica</a> dataset, the model-agnostic TSDF-Sampling can render better results with a limited number of neural network queries. 
-    </p>
     <div class="columns is-centered">
       <div class="column is-four-fifths">
         <!-- <h3 class="title is-3">Replica</h3> -->
         <div class="content">
+          <p>
+            In the widely used <a href="https://github.com/facebookresearch/Replica-Dataset">Replica</a> dataset, the model-agnostic TSDF-Sampling can render better results with a limited number of neural network queries. 
+          </p>
           <div class="columns is-vcentered">
             <div class="column is-half has-text-centered">
               <!-- <p>
