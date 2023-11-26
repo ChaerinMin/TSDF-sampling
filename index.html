@@ -45,6 +45,12 @@
           var carousels = bulmaCarousel.attach(); // This initializes all carousels on the page
       });
   </script>  
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({            
+          tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}            
+      });
+  </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
   <!-- <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@3.0.0/dist/js/bulma-carousel.min.js"></script> -->
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
@@ -359,21 +365,23 @@
         <!-- <div class="columns is-centered has-text-centered">
           <h2 class="title is-3">Ablation</h2>
         </div> -->
-        <p>
-          In the synthetic Garage dataset, TSDF-Sampling enables high-fidelty renderings of color, depth, and normal, with as few as 4 samples per ray.
-        </p>
-        <div class="columns is-vcentered">
-          <div class="column is-half has-text-centered">
-            <video id="teaser" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/garage_ab_color.mp4"
-              type="video/mp4">
-            </video>
-          </div>
-          <div class="column is-half has-text-centered">
-            <video id="teaser" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/garage_ab_normal.mp4"
-              type="video/mp4">
-            </video>
+        <div class="content">
+          <p>
+            In the synthetic Garage dataset, TSDF-Sampling enables high-fidelty renderings of color, depth, and normal, with as few as 4 samples per ray.
+          </p>
+          <div class="columns is-vcentered">
+            <div class="column is-half has-text-centered">
+              <video id="teaser" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/garage_ab_color.mp4"
+                type="video/mp4">
+              </video>
+            </div>
+            <div class="column is-half has-text-centered">
+              <video id="teaser" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/garage_ab_normal.mp4"
+                type="video/mp4">
+              </video>
+            </div>
           </div>
         </div>
         <!-- <div id="results-carousel" class="carousel results-carousel">
@@ -470,9 +478,6 @@
 
     <!-- Garage. -->
     <div class="content">
-      <p>
-        The PSNR drastically increases from 23 to 28 when using the TSDF-Sampling technique with only 11 samples in average. 
-      </p>
       <!-- <div class="columns is-centered"> -->
         <!-- <div class="column"> -->
           <!-- <h3 class="title is-3">Replica</h3> -->
@@ -483,6 +488,9 @@
           Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
           would be impossible without nerfies since it would require going through a wall.
         </p> -->
+        <p>
+          The PSNR drastically increases from 23 to 28 when using the TSDF-Sampling technique with only 11 samples in average. 
+        </p>
         <div class="b-dics" style="width: 100%">
           <img src="static/images/garage_ts.png" alt="Ours" />
           <img src="static/images/garage_hs.png" alt="Hierarchical Sampling" />
