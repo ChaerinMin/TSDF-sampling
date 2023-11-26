@@ -23,8 +23,8 @@
   </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <!-- <script src="./static/js/bulma-carousel.min.js"></script> -->
-  <!-- <script src="./static/js/bulma-carousel.js"></script> -->
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-carousel.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
   <script src="js/video_comparison.js"></script>
@@ -45,7 +45,7 @@
           var carousels = bulmaCarousel.attach(); // This initializes all carousels on the page
       });
   </script>  
-  <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@3.0.0/dist/js/bulma-carousel.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@3.0.0/dist/js/bulma-carousel.min.js"></script> -->
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
@@ -357,28 +357,34 @@
         <!-- <div class="columns is-centered has-text-centered">
           <h2 class="title is-3">Ablation</h2>
         </div> -->
-        <!-- <div id="results-carousel" class="carousel results-carousel"> -->
         <div class="columns is-vcentered">
           <div class="column is-half has-text-centered">
             <video id="teaser" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/garage_ab_color.mp4"
-                      type="video/mp4">
+              type="video/mp4">
             </video>
           </div>
-          <!-- <div class="item item-garage_ab_depth">
-            <video poster="" id="garage_ab_depth" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/garage_ab_depth.mp4"
-                      type="video/mp4">
-            </video>
-          </div> -->
           <div class="column is-half has-text-centered">
             <video id="teaser" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/garage_ab_normal.mp4"
-                      type="video/mp4">
+              type="video/mp4">
             </video>
           </div>
         </div>
-        <!-- </div> -->
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item item-garage_ab_depth">
+            <video poster="" id="garage_ab_depth" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/garage_ab_depth.mp4"
+              type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-garage_ab_depth">
+            <video poster="" id="garage_ab_depth" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/garage_ab_depth.mp4"
+              type="video/mp4">
+            </video>
+          </div>
+        </div>
       </div>
     </div>
   </div>
