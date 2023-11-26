@@ -463,7 +463,7 @@
         <!-- <h3 class="title is-3">Replica</h3> -->
         <div class="content">
           <p>
-            In the widely used <a href="https://github.com/facebookresearch/Replica-Dataset">Replica</a> dataset, the model-agnostic TSDF-Sampling can render better results with a limited number of neural network queries. 
+            In the widely used <a href="https://github.com/facebookresearch/Replica-Dataset">Replica</a> dataset, the model-agnostic TSDF-Sampling can render more complete and quality results with a limited number of neural network queries. 
           </p>
           <div class="columns is-vcentered">
             <div class="column is-half has-text-centered">
@@ -501,7 +501,7 @@
           would be impossible without nerfies since it would require going through a wall.
         </p> -->
         <p>
-          The PSNR drastically increases from 23 to 28 when using the TSDF-Sampling technique with only 11 samples in average. 
+          The PSNR drastically increases from 23 to 28, and the depth error decreases by more than 50%, when using the TSDF-Sampling technique. 
         </p>
         <div class="b-dics" style="width: 100%">
           <img src="static/images/garage_ts.png" alt="Ours" />
@@ -575,7 +575,7 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{,
+    <pre><code>@article{
   title     = {TSDF-Sampling: Efficient Sampling for Neural Surface Field using Truncated Signed Distance Field},
   journal   = {ArXiv},
   year      = {2023},
