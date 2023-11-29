@@ -46,6 +46,10 @@
         codeLink.textContent = "Coming Soon";
         console.log("mouseover");
       };
+      document.getElementById("code-link").onmouseout = function (e) {
+			codeLink = e.fromElement;
+			codeLink.textContent = "Code";
+      };
   </script>
   <script>
       document.addEventListener('DOMContentLoaded', function () {
