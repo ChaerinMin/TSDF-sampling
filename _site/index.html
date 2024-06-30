@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Efficient Sampling for Neural Surface Field using Truncated Signed Distance Field.">
+  <meta name="keywords" content="TSDF-Sampling, NeuralImplicitSurfaces">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fast Spatial Reasoning of Implicit 3D maps through Explicit Near-Far Sampling Range Prediction</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-carousel.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="js/video_comparison.js"></script>
+  <script src="static/js/dics.min.js"></script>
+  <script>
+      document.addEventListener('DOMContentLoaded', domReady);
+      function domReady() {
+          for (const e of document.querySelectorAll(".b-dics")) {
+              new Dics({
+                  container: e,
+                  textPosition: "top"
+              });
+          }
+      }
+  </script>
+  <script>
+      document.getElementById("code-link").onmouseover = function (e) {
+        codeLink = e.srcElement;
+        codeLink.textContent = "Coming Soon";
+        console.log("mouseover");
+      };
+      document.getElementById("code-link").onmouseout = function (e) {
+			codeLink = e.fromElement;
+			codeLink.textContent = "Code";
+      };
+  </script>
+  <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          var carousels = bulmaCarousel.attach(); // This initializes all carousels on the page
+      });
+  </script>  
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({            
+          tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}            
+      });
+  </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@3.0.0/dist/js/bulma-carousel.min.js"></script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/dics.min.css">
+  <link rel="stylesheet" href="static/css/dics.min.css">
+  <link rel="icon" href="./static/images/favicon.png">
+
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Fast Spatial Reasoning of Implicit 3D maps through Explicit Near-Far Sampling Range Prediction</h1>
+          <div class="is-size-5 publication-venue">
+            IROS 2024
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://chaerinmin.github.io/" target="_blank">Chaerin Min</a><sup>*2</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/%EC%84%B8%ED%98%84-%EC%B0%A8-20b936294/" target="_blank">Sehyun Cha</a><sup>*3</sup>,</span>
+            <span class="author-block">
+              <a href="https://sites.google.com/view/chwon" target="_blank">Changhee Won</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://rvlab.snu.ac.kr/people/jwlim" target="_blank">Jongwoo Lim</a><sup>1,4</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal contribution</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>MultiplEYE</span>
+            <span class="author-block"><sup>2</sup>Brown University</span>
+            <span class="author-block"><sup>3</sup>LG Electronics</span>
+            <span class="author-block"><sup>4</sup>Seoul National University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="assets/tsdf.pdf"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2311.17878"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://tsdf-sampling.github.io"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span id="code-link">Coming soon</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://tsdf-sampling.github.io"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser mb-4">
+  <div class="container is-max-desktop">
+    <div class="hero-body-padding-small">
+      <div class="columns is-vcentered is-variable is-1">
+        <div class="column is-half has-text-centered">
+          <video id="teaser" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/lobby_flythrough_hs_colordepth.mp4"
+                    type="video/mp4">
+          </video>
+          <p class="is-family-monospace">(a) Hierarchical Sampling</p>
+        </div>
+        <div class="column is-half has-text-centered">
+          <video id="teaser" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/lobby_flythrough_ts_colordepth.mp4"
+                    type="video/mp4">
+          </video>
+          <p class="is-family-monospace">(b) TSDF Sampling</p>
+        </div>
+      </div>
+      <h2 class="subtitle has-text-centered">
+        TSDF-Sampling reliably renders neural surface fields with only 18 samples per ray for a 20x20x5 $\text{m}^3$ scene
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section has-background-light">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-light is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Multi-view neural surface reconstruction has exhibited impressive results. 
+            However, a notable limitation is the prohibitively slow inference time when compared to traditional techniques, 
+            primarily attributed to the dense sampling, required to maintain the rendering quality. 
+          </p>
+          <p>
+            We present <i>TSDF-Sampling</i> &mdash; <b>a novel approach that substantially reduces the number of samplings by incorporating the Truncated Signed Distance Field (TSDF) of the scene.</b> 
+            While prior works have proposed importance sampling, 
+            their dependence on initial uniform samples over the entire space makes them unable to avoid performance degradation when trying to use less number of samples. 
+            In contrast, our method leverages the TSDF volume generated only by the trained views, 
+            and it proves to provide a reasonable bound on the sampling from upcoming novel views. 
+            As a result, we achieve high rendering quality by fully exploiting the continuous neural SDF estimation within the bounds given by the TSDF volume. 
+          </p>
+          <p>
+            Notably, our method is the first approach that can be robustly plug-and-play into a diverse array of neural surface field models, 
+            as long as they use the volume rendering technique. Our empirical results show an 11-fold increase in inference speed without compromising performance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+
+    <!-- Method. -->
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Method</h2>
+      </div>
+    </div>
+    <div class="content">
+      <p>
+        TSDF-Sampling integrates TSDF volume generated only by the train views, and the TSDF volume can provide sampling bound prior for upcoming novel views.
+        Note that the model agnostic TSDF-Sampling can use any existing neural surface fields as a baseline. Below visualizes the coarse samples, and fine samples will be upsampled from the coarse samples. 
+      </p>
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <div class="content">
+            <div class="columns is-vcentered">
+              <div class="column is-half has-text-centered">
+                <img src="./static/images/method_HS.png"
+                        class="method-image"
+                        alt="Method - Hierarchical Sampling."/>
+                <p class="is-family-monospace">(a) Hierarchical Sampling</p>
+              </div>
+              <div class="column is-half has-text-centered">
+                <img src="./static/images/method_TS.png"
+                        class="method-image"
+                        alt="Method - TSDF Sampling."/>
+                <p class="is-family-monospace">(b) TSDF Sampling</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Method. -->
+  </div>
+</section>
+
+<section class="section has-background-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-max-desktop is-variable is-2">
+      <div class="column">
+        <h2 class="title is-3 has-text-centered">Ablation</h2>
+        <!-- <div class="columns is-centered has-text-centered">
+          <h2 class="title is-3">Ablation</h2>
+        </div> -->
+        <div class="content">
+          <p>
+            In the synthetic Garage dataset, TSDF-Sampling enables high-fidelty renderings of color, depth, and normal, with as few as 4 samples per ray.
+          </p>
+          <div class="columns is-vcentered">
+            <div class="column is-half has-text-centered">
+              <video id="teaser" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/garage_ab_color.mp4"
+                type="video/mp4">
+              </video>
+            </div>
+            <div class="column is-half has-text-centered">
+              <video id="teaser" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/garage_ab_normal.mp4"
+                type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+        <!-- <div id="results-carousel" class="carousel results-carousel">
+          <div class="item item-steve">
+            <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/garage_ab_color.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-chair-tp">
+            <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/ggarage_ab_depth.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-shiba">
+            <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/garage_ab_normal.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/garage_ab_color.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-blueshirt">
+            <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/garage_ab_depth.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-mask">
+            <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/garage_ab_color.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-coffee">
+            <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/garage_ab_depth.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-toby">
+            <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/garage_ab_normal.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <h2 class="title is-3">Results</h2>
+    </div>
+
+    <!-- Replica. -->
+    <div class="columns is-centered is-variable is-2">
+      <div class="column is-four-fifths">
+        <!-- <h3 class="title is-3">Replica</h3> -->
+        <div class="content">
+          <p>
+            In the widely used <a href="https://github.com/facebookresearch/Replica-Dataset">Replica</a> dataset, the model-agnostic TSDF-Sampling can render more complete and quality results with a limited number of neural network queries. 
+          </p>
+          <div class="columns is-vcentered">
+            <div class="column is-half has-text-centered">
+              <!-- <p>
+                Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+                would be impossible without nerfies since it would require going through a wall.
+              </p> -->
+              <div class="b-dics" style="width: 100%">
+                <img src="static/images/replica_ts.png" alt="Ours" />
+                <img src="static/images/replica_hs.png" alt="Hierarchical Sampling" />
+              </div>
+            </div>
+            <div class="column is-half has-text-centered">
+              <div class="b-dics" style="width: 100%">
+                <img src="static/images/replica_ts_depth.png" alt="Ours" />
+                <img src="static/images/replica_hs_depth.png" alt="Hierarchical Sampling" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <!--/ Replica. -->
+
+    <!-- Garage. -->
+    <div class="content">
+      <!-- <div class="columns is-centered"> -->
+        <!-- <div class="column"> -->
+          <!-- <h3 class="title is-3">Replica</h3> -->
+          <!-- <div class="content"> -->
+            <!-- <div class="columns is-vcentered"> -->
+      <div class="column is-centered">
+        <!-- <p>
+          Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+          would be impossible without nerfies since it would require going through a wall.
+        </p> -->
+        <p>
+          The PSNR drastically increases from 23 to 28, and the depth error decreases by more than 50%, when using the TSDF Sampling approach. 
+        </p>
+        <div class="b-dics" style="width: 100%">
+          <img src="static/images/garage_ts.png" alt="Ours" />
+          <img src="static/images/garage_hs.png" alt="Hierarchical Sampling" />
+        </div>
+      </div>
+      <div class="column is-centered has-text-centered">
+        <div class="b-dics" style="width: 100%">
+          <img src="static/images/garage_ts_depth.png" alt="Ours" />
+          <img src="static/images/garage_hs_depth.png" alt="Hierarchical Sampling" />
+        </div>
+      </div>
+            <!-- </div> -->
+          <!-- </div> -->
+        <!-- </div> -->
+      <!-- </div> -->
+    </div>
+    <!--/ Garage. -->
+
+    <!-- Animation. -->
+    <!-- <div class="columns is-centered">
+      <div class="column is-full-width"> -->
+        <!-- <h2 class="title is-3">Animation</h2> -->
+
+        <!-- Interpolating. -->
+        <!-- <h3 class="title is-4">Interpolating states</h3>
+        <div class="content has-text-justified">
+          <p>
+            We can also animate the scene by interpolating the deformation latent codes of two input
+            frames. Use the slider here to linearly interpolate between the left frame and the right
+            frame.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_start.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Start Frame</p>
+          </div>
+          <div class="column interpolation-video-column">
+            <div id="interpolation-image-wrapper">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider"
+                   step="1" min="0" max="100" value="0" type="range">
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_end.jpg"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">End Frame</p>
+          </div>
+        </div>
+        <br/> -->
+        <!--/ Interpolating. -->
+
+        <!--/ Under construction. -->
+        <!-- <h3 class="title is-4">Under construction</h3> -->
+        <!--/ Under construction. -->
+        
+      <!-- </div> -->
+    <!-- </div> -->
+    <!--/ Animation. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{
+  title     = {Coming Soon},
+  journal   = {},
+  year      = {},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <!-- <div class="content has-text-centered"> -->
+      <!-- <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a> -->
+    <!-- </div> -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            The website template was borrowed from <a href="https://nerfies.github.io/">Nerfies</a> and <a href="https://bakedsdf.github.io/">BakedSDF</a>. The website icon was created by <a href="https://www.flaticon.com/free-icons/surface" title="surface icons">Flaticon</a>.
+            <!-- This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>. -->
+          </p>
+          <!-- <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

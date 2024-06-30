@@ -127,39 +127,38 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">Fast Spatial Reasoning of Implicit 3D maps through Explicit Near-Far Sampling Range Prediction</h1>
-          <!-- <div class="is-size-5 publication-authors">
+          <div class="is-size-5 publication-venue">
+            IROS 2024
+          </div>
+          <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://keunhong.com">Keunhong Park</a><sup>1</sup>,</span>
+              <a href="https://chaerinmin.github.io/" target="_blank">Chaerin Min</a><sup>*2</sup>,</span>
             <span class="author-block">
-              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
+              <a href="https://www.linkedin.com/in/%EC%84%B8%ED%98%84-%EC%B0%A8-20b936294/" target="_blank">Sehyun Cha</a><sup>*3</sup>,</span>
             <span class="author-block">
-              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
+              <a href="https://sites.google.com/view/chwon" target="_blank">Changhee Won</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
+              <a href="https://rvlab.snu.ac.kr/people/jwlim" target="_blank">Jongwoo Lim</a><sup>1,4</sup>,
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Google Research</span>
-          </div> -->
+            <span class="author-block"><sup>*</sup>Equal contribution</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>MultiplEYE</span>
+            <span class="author-block"><sup>2</sup>Brown University</span>
+            <span class="author-block"><sup>3</sup>LG Electronics</span>
+            <span class="author-block"><sup>4</sup>Seoul National University</span>
+          </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2311.17878.pdf"
-                   class="external-link button is-normal is-rounded is-dark">
+                <a href="assets/tsdf.pdf"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                   </span>
@@ -168,7 +167,7 @@
               </span>
               <span class="link-block">
                 <a href="https://arxiv.org/abs/2311.17878"
-                   class="external-link button is-normal is-rounded is-dark">
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
@@ -253,7 +252,7 @@
             primarily attributed to the dense sampling, required to maintain the rendering quality. 
           </p>
           <p>
-            This paper introduces <b>a novel approach that substantially reduces the number of samplings by incorporating the Truncated Signed Distance Field (TSDF) of the scene.</b> 
+            We present <i>TSDF-Sampling</i> &mdash; <b>a novel approach that substantially reduces the number of samplings by incorporating the Truncated Signed Distance Field (TSDF) of the scene.</b> 
             While prior works have proposed importance sampling, 
             their dependence on initial uniform samples over the entire space makes them unable to avoid performance degradation when trying to use less number of samples. 
             In contrast, our method leverages the TSDF volume generated only by the trained views, 
