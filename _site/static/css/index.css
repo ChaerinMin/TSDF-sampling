@@ -58,6 +58,7 @@ body {
 .publication-venue {
     color: #555;
     /* width: fit-content; */
+    text-align: center;
     font-weight: bold;
 }
 
