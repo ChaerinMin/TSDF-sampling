@@ -1,6 +1,6 @@
 # TSDF-Sampling
 
-This is the repository that contains source code for the [TSDF-Sampling website](https://chaerinmin.github.io/tsdf-sampling). The template was borrowed from [Nerfies](https://nerfies.github.io/).
+This is the repository that contains source code for the [TSDF-Sampling website](https://chaerinmin.github.io/TSDF-sampling/). The template was borrowed from [Nerfies](https://nerfies.github.io/).
 
 
 
