@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Efficient Sampling for Neural Surface Field using Truncated Signed Distance Field.">
+        content="TSDF-Sampling">
   <meta name="keywords" content="TSDF-Sampling, NeuralImplicitSurfaces">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fast Spatial Reasoning of Implicit 3D maps through Explicit Near-Far Sampling Range Prediction</title>
+  <title>TSDF-Sampling</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -252,7 +252,7 @@
             primarily attributed to the dense sampling, required to maintain the rendering quality. 
           </p>
           <p>
-            We present <i>TSDF-Sampling</i> &mdash; <b>a novel approach that substantially reduces the number of samplings by incorporating the Truncated Signed Distance Field (TSDF) of the scene.</b> 
+            We present <b>TSDF-Sampling</b> &mdash; a novel approach that substantially reduces the number of samplings by incorporating the Truncated Signed Distance Field (TSDF) of the scene.
             While prior works have proposed importance sampling, 
             their dependence on initial uniform samples over the entire space makes them unable to avoid performance degradation when trying to use less number of samples. 
             In contrast, our method leverages the TSDF volume generated only by the trained views, 
