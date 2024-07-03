@@ -1,8 +1,28 @@
 # TSDF-Sampling
+> __Fast Spatial Reasoning of Implicit 3D maps through Explicit Near-Far Sampling Range Prediction__  
+> Chaerin Min*, Sehyun Cha*, Changhee Won, Jongwoo Lim+ \
+> (* equal contribution, + corresponding author) \
+> _IEEE/RSJ International Conference on Intelligent Robots and Systems. (IROS), 2024._  
+> __[Paper](https://arxiv.org/abs/2311.17878) &nbsp; [Project](https://chaerinmin.github.io/TSDF-sampling/)__
 
-This is the repository that contains source code for the [TSDF-Sampling website](https://chaerinmin.github.io/TSDF-sampling/). The template was borrowed from [Nerfies](https://nerfies.github.io/).
+# Code
+NeRF + Replica: soon
 
+MonoSDF + Lobby / Garage: under license of MultiplEYE Co.
 
+# Related Resources
 
-# Website License
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+Project page template was borrowed from [Nerfies](https://nerfies.github.io/).
+
+# Acknowledgements
+
+coming soon 
+
+# Citations
+
+    @article{min2023tsdf,
+      title={TSDF-Sampling: Efficient Sampling for Neural Surface Field using Truncated Signed Distance Field},
+      author={Min, Chaerin and Cha, Sehyun and Won, Changhee and Lim, Jongwoo},
+      journal={arXiv preprint arXiv:2311.17878},
+      year={2023}
+    }
