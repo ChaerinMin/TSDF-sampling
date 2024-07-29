@@ -1,0 +1,6 @@
+RenderConfig.checkpoint_path = "outputs"
+RenderConfig.checkpoint_step = 50000
+RenderConfig.interpolation_times = 5
+RenderConfig.fps = 10
+RenderConfig.use_novel_cam = False
+RenderConfig.video_file = "tsdf_sampler.mp4"

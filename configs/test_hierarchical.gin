@@ -1,0 +1,7 @@
+TrainConfig.render_batch_size = 4096
+TrainConfig.checkpoint_path = "outputs"
+TrainConfig.model_config_file = "./configs/model_configs/vanilla_nerf.gin"
+TrainConfig.dataset_config_file = "./configs/dataset_configs/replica_scan1.gin"
+TrainConfig.use_tsdf = False
+PdfSampler.num_samples = 16
+PdfSampler.num_fine_samples = 32

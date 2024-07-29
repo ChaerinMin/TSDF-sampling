@@ -1,0 +1,5 @@
+RenderConfig.checkpoint_path = "/data/nerf_result/ngp_resample"
+RenderConfig.checkpoint_step = 30000
+RenderConfig.interpolation_times = 5
+RenderConfig.fps = 10
+RenderConfig.use_novel_cam = True

@@ -1,0 +1,11 @@
+# Config Setup
+TrainConfig.decay_rate = 0.05
+TrainConfig.step_per_log = 100
+TrainConfig.step_per_eval = 5000
+TrainConfig.step_per_save = 10000
+TrainConfig.num_steps = 30000
+TrainConfig.train_batch_size = 8192
+TrainConfig.render_batch_size = 8192
+TrainConfig.checkpoint_path = "/data/nerf_result/ngp_resample"
+TrainConfig.dataset_config_file = "/research/nerf-project/configs/dataset_configs/replica_scan1.gin"
+TrainConfig.model_config_file = "/research/nerf-project/configs/model_configs/ngp.gin"

@@ -1,0 +1,10 @@
+# Config Setup
+TrainConfig.step_per_log = 100
+TrainConfig.step_per_eval = 5000
+TrainConfig.step_per_save = 10000
+TrainConfig.train_batch_size = 8192
+TrainConfig.render_batch_size = 4096
+TrainConfig.checkpoint_path = ""
+TrainConfig.dataset_config_file = "./configs/dataset_configs/replica_scan1.gin"
+TrainConfig.model_config_file = "./configs/model_configs/vanilla_nerf_wo_coarse.gin"
+TrainConfig.dataset_normalize = True

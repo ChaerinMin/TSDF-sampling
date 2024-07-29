@@ -1,0 +1,43 @@
+load_model.model_cls = @BaseModel
+load_model.network_fn = @build_network_fn
+build_network_fn.geometric_field_fn = @geometric/build_field_fn
+build_network_fn.color_field_fn = @color/build_field_fn
+
+geometric/build_field_fn.field_cls = @NeRFDensityField
+geometric/build_field_fn.encoder_cls = @geometric/PositionalEncoder
+geometric/build_field_fn.mlp_cls = @geometric/VanillaMLP
+geometric/build_field_fn.input_components = {'enc_feature': -1}
+
+geometric/PositionalEncoder.num_freqs = 10
+geometric/PositionalEncoder.include_input = False
+geometric/PositionalEncoder.enc_input = 'position'
+
+geometric/VanillaMLP.num_hidden_layers = 8
+geometric/VanillaMLP.hidden_dim = 256
+geometric/VanillaMLP.output_dim = 256
+geometric/VanillaMLP.skip_layers = [5]
+geometric/VanillaMLP.activation = 'relu'
+geometric/VanillaMLP.out_activation = 'relu'
+geometric/VanillaMLP.geometric_init = False
+geometric/VanillaMLP.weight_norm = False
+
+color/build_field_fn.field_cls = @NeRFColorField
+color/build_field_fn.encoder_cls = @color/PositionalEncoder
+color/build_field_fn.mlp_cls = @color/VanillaMLP
+color/build_field_fn.input_components = {'enc_feature':-1, 'geometric_feature':256}
+
+color/PositionalEncoder.num_freqs = 4
+color/PositionalEncoder.include_input = False
+color/PositionalEncoder.enc_input = 'direction'
+
+color/VanillaMLP.num_hidden_layers = 0
+color/VanillaMLP.hidden_dim = 128
+color/VanillaMLP.output_dim = 128
+color/VanillaMLP.skip_layers = []
+color/VanillaMLP.activation = 'relu'
+color/VanillaMLP.out_activation = 'relu'
+color/VanillaMLP.geometric_init = False
+color/VanillaMLP.weight_norm = False
+
+load_model.sampler_fn = @load_sampler
+load_sampler.sampler_cls = @PdfSampler

@@ -1,0 +1,33 @@
+load_model.model_cls = @BaseModel
+load_model.network_fn = @build_network_fn
+build_network_fn.geometric_field_fn = @geometric/build_field_fn
+build_network_fn.color_field_fn = @color/build_field_fn
+
+geometric/build_field_fn.field_cls = @GeometricField
+geometric/build_field_fn.encoder_cls = @geometric/HashGridEncoder
+geometric/build_field_fn.mlp_cls = @geometric/TcnnMLP
+geometric/build_field_fn.input_components = {'enc_feature': -1}
+GeometricField.density_act_str = 'trunc_exp'
+
+geometric/TcnnMLP.num_hidden_layers = 2
+geometric/TcnnMLP.hidden_dim = 64
+geometric/TcnnMLP.output_dim = 17
+geometric/TcnnMLP.activation = 'ReLU'
+geometric/TcnnMLP.out_activation = 'None'
+
+color/build_field_fn.field_cls = @ColorField
+color/build_field_fn.encoder_cls = @color/SHEncoder
+color/build_field_fn.mlp_cls = @color/TcnnMLP
+color/build_field_fn.input_components = {'enc_feature':-1, 'geometric_feature':16}
+
+color/SHEncoder.degree = 4
+color/SHEncoder.enc_input = 'direction'
+
+color/TcnnMLP.num_hidden_layers = 2
+color/TcnnMLP.hidden_dim = 64
+color/TcnnMLP.output_dim = 3
+color/TcnnMLP.activation = 'ReLU'
+color/TcnnMLP.out_activation = 'Sigmoid'
+
+load_model.sampler_fn = @load_sampler
+load_sampler.sampler_cls = @PdfSampler

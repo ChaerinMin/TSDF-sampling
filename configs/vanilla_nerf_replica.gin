@@ -1,0 +1,6 @@
+# Config Setup
+TrainConfig.meta_data_path = "/home/sehyun/nerf-project/dataset/monosdf_replica.json"
+TrainConfig.step_per_log = 100
+TrainConfig.train_batch_size = 4096
+TrainConfig.checkpoint_path = "/home/sehyun/vanilla_nerf_test"
+TrainConfig.model_config_file = "/home/sehyun/nerf-project/configs/model_configs/vanilla_nerf.gin"

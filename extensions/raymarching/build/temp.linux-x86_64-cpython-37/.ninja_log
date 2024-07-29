@@ -1,0 +1,3 @@
+# ninja log v5
+0	12076	1721699190832383054	/dev/hdd/nerf-project/extensions/raymarching/build/temp.linux-x86_64-cpython-37/dev/hdd/nerf-project/extensions/raymarching/src/bindings.o	3b6b9e961a7746e2
+1	26343	1721699205108431677	/dev/hdd/nerf-project/extensions/raymarching/build/temp.linux-x86_64-cpython-37/dev/hdd/nerf-project/extensions/raymarching/src/raymarching.o	81fb4d2c1482b25f

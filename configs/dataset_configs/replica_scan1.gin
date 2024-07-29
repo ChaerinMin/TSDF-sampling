@@ -1,0 +1,7 @@
+DataParserConfig.dataset_dir = "./datasets/replica"
+DataParserConfig.scan_id = 1
+DataParserConfig.center_crop_type = "center_crop_for_replica"
+
+DatasetConfig.near = 0.
+DatasetConfig.far = 2.5
+DatasetConfig.margin = 1.

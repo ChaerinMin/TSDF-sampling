@@ -1,0 +1,90 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Train",
+            "type": "python",
+            "request": "launch",
+            "module": "train",
+            "args": [
+                "--gin_configs=configs/train_vanilla_nerf.gin"
+                // "--gin_configs=configs/train_monosdf.gin"
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0"
+            },
+            "console": "integratedTerminal",
+            "justMyCode": false,
+        },
+        {
+            "name": "Python: Debug",
+            "type": "python",
+            "request": "launch",
+            "module": "debug",
+            // "args": [
+            //     "--gin_configs=configs/vanilla_nerf_replica.gin"
+            // ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0"
+            },
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: evaluate",
+            "type": "python",
+            "request": "launch",
+            "module": "evaluate_tsdf",
+            "args": [
+                "--gin_configs=configs/train_vanilla_nerf.gin"
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0"
+            },
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Python: render_video",
+            "type": "python",
+            "request": "launch",
+            "module": "render_video",
+            "args": [
+                "--gin_configs=configs/train_vanilla_nerf.gin",
+                "--gin_render_configs=configs/render_vanilla_nerf.gin"
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0"
+            },
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: plot_distribution",
+            "type": "python",
+            "request": "launch",
+            "module": "plot_distribution",
+            "args": [
+                "--gin_configs=configs/train_vanilla_nerf_wo_coarse.gin",
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0"
+            },
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: test",
+            "type": "python",
+            "request": "launch",
+            "module": "test",
+            "args": [
+                "--gin_configs=configs/test_ours.gin",
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0"
+            },
+            "console": "integratedTerminal"
+        }
+    ]
+}
